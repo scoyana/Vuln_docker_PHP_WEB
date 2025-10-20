@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - ./php:/var/www/html
+      - ./apache2/apache2.conf:/etc/apache2/apache2.conf
+      - ./apache2/conf-available/security.conf:/etc/apache2/conf-available/security.conf
+    depends_on:
+      - db
+
+  db:
+    image: mysql:5.7
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpass
+      MYSQL_DATABASE: board
+      MYSQL_USER: user
+      MYSQL_PASSWORD: userpass
+    volumes:
+      - dbdata:/var/lib/mysql
+
+volumes:
+  dbdata:
