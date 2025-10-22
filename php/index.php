@@ -1,23 +1,26 @@
 <?php
 $page = $_GET['page'] ?? 'home';
 
-$whitelist = ['home', 'about'];
+$whitelist = ['home', 'about', 'write'];
 if (in_array($page, $whitelist)) {
     
     switch ($page) {
-        case 'home';
+        case 'home':
             $pageTitle = '게시판';
             break;
-        case 'about';
+        case 'about':
             $pageTitle = '소개';
             break;
-        default;
+        case 'write':
+            $pageTitle = '글쓰기';
+            break;
+        default:
             $pageTitle = '게시판';
             break;
 }
 
     $content_view = "$page.php";
-    include 'layout.php';
+    include_once 'layout.php';
 }   else {
     echo "허용되지 않은 페이지입니다.";
 }
