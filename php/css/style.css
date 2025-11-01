@@ -1,0 +1,387 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+h1 {
+    margin-left: 20px;
+    font-size: 2.5em;
+    color: #333;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.write_btn {
+    margin-left: 10px;
+    margin-top: 5px;
+    height: 30px;
+    width: 50px;
+    text-align: center;
+    font-size: 0.9em;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+
+#user_account {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 20px;
+    color: #007BFF;
+    text-decoration: none;
+}
+#user_account a {
+    color: #007BFF;
+    text-decoration: none;
+}   
+
+header h1 a {
+    text-decoration: none;
+    color: #333;
+}
+
+.footer {
+    border: none;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+    padding-top: 10px;
+    text-align: center;
+    color: #666;
+}
+
+.explain {
+    font-size: 0.9em;
+    color: #666;
+    text-align: center;
+    margin-top: 20px;
+}
+.explain p {
+    margin: 5px 0;
+}
+.explain strong {
+    color: #d9534f;
+}
+footer {
+    bottom: 0px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    height: 4rem;
+    margin-top: 40px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+footer p {
+    margin: 5px 0;
+    font-size: 0.85em;
+}
+
+/* 회원 가입 폼 스타일 */
+#registerHead {
+    text-align: center;
+    margin-top: 40px;
+    color: #333;
+}
+.registerForm {
+    width: 320px;
+    margin: 40px auto;
+    padding: 40px 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+.registerForm label {
+    display: block;
+    margin-bottom: 15px;
+    font-size: 14px;
+    color: #555;
+}
+.registerForm input {
+    width: 100%;
+    padding: 10px 12px;
+    margin-top: 5px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+#checkBtn {
+    display: inline-block;
+    padding: 8px 15px;
+    margin-top: 5px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 13px;
+}
+
+#registerBtn {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745; 
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+#registerBtn:hover {
+    background-color: #218838;
+}
+
+/* 로그인 폼 스타일 */
+.login_form {
+    margin: 20px;
+    padding: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 300px;
+}
+.login_form {
+    width: 320px;
+    margin: 100px auto; /* 화면 가운데 정렬 */
+    padding: 40px 30px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.login_form input {
+    width: 100%;
+    padding: 10px 12px;
+    margin: 10px 0;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+}
+
+#login {
+    width: 100%;
+    padding: 10px;
+    background-color: #1877f2; /* 페이스북 스타일 파란색 */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#login:hover {
+    background-color: #166fe5;
+}
+
+.post_list li img {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;   /* 이미지 비율 유지 */
+    vertical-align: middle;
+    margin-left: 8px;
+}
+
+
+
+/* 글쓰기 폼 스타일 */
+.write_form {
+    width: 600px;
+    margin: 20px auto;
+    padding: 30px 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.write_form input[type="text"],
+.write_form textarea,
+.write_form input[type="file"] {
+    width: 100%;
+    margin: 10px 0 20px;
+    padding: 10px 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.write_form textarea {
+    height: 200px;
+}
+
+#write {
+    width: 100%;
+    padding: 12px;
+    background-color: #1877f2;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#write:hover {
+    background-color: #166fe5;
+}
+
+.write_form label,
+.write_form input[type="text"],
+.write_form textarea {
+    display: block;
+}
+
+/* 글쓰기 버튼 */
+.write_btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin-bottom: 20px;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: 0.2s ease;
+}
+
+.write_btn:hover {
+    background-color: #007BFF;
+}
+
+/* 게시글 목록 */
+.post_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post_list li {
+    background: #fff;
+    margin-bottom: 15px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+}
+
+.post_list li:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.post_list li a {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.post_list li a:hover {
+    text-decoration: underline;
+}
+
+.post_list li small {
+    display: block;
+    margin-top: 5px;
+    color: #666;
+    font-size: 0.85rem;
+}
+
+/* 글 조회 */
+#viewHead {
+    text-align: left;
+    margin-top: 30px;
+    color: #333;
+}
+#viewContent {
+    margin-top: 20px;
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #444;
+}
+#viewContent img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 15px;
+}
+
+#viewBack {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 30px;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#viewBack:hover {
+    background-color: #5a6268;
+}
+
+#viewEdit {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 30px;
+    margin-left: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#viewEdit:hover {
+    background-color: #0069d9;
+}
+
+#viewDelete {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 30px;
+    margin-left: 10px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#viewDelete:hover {
+    background-color: #c82333;
+}
