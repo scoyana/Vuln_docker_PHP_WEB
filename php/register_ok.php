@@ -17,6 +17,7 @@ if (empty($user_id) || empty($password) || empty($passwordRe)) {
     exit();
 }
 
+
 $hash = password_hash($password, PASSWORD_DEFAULT);
 
 try {

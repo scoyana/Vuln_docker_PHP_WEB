@@ -4,11 +4,6 @@ include_once 'header.php';
 // GET으로 전달된 글 ID 받기
 $id = $_GET['id'] ?? null;
 
-if (!$id) {
-    echo "<script>alert('잘못된 접근입니다.'); history.back();</script>";
-    exit;
-}
-
 try {
     // 게시글 + 작성자 정보 불러오기
     $sql = "SELECT p.*, u.user_id 
@@ -25,21 +20,19 @@ try {
 }
 ?>
 
-<h2>게시글 수정</h2>
-
 <form method="POST" action="edit_ok.php" enctype="multipart/form-data" class="write_form">
     <!-- 글 ID 전달 -->
-    <input type="hidden" name="id" value="<?= htmlspecialchars($post['id']) ?>">
+    <input type="hidden" name="id" value="<?= ($post['id']) ?>">
 
     제목 :
-    <input type="text" name="subject" id="subject" value="<?= htmlspecialchars($post['title']) ?>" required> <br>
+    <input type="text" name="subject" id="subject" value="<?= ($post['title']) ?>" required> <br>
 
     내용 :
-    <textarea name="content" id="content" required><?= htmlspecialchars($post['content']) ?></textarea> <br>
+    <textarea name="content" id="content" required><?= ($post['content']) ?></textarea> <br>
 
     <?php if ($post['file_path']): ?>
-        <p>현재 첨부 파일:
-            <a href="<?= htmlspecialchars($post['file_path']) ?>" target="_blank">다운로드</a>
+        <p>첨부 파일:
+            <a href="<?= ($post['file_path']) ?>" target="_blank">다운로드</a>
         </p>
     <?php endif; ?>
 

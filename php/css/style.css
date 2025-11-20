@@ -12,7 +12,7 @@ body {
 
 h1 {
     margin-left: 20px;
-    font-size: 2.5em;
+    font-size: 2.0em;
     color: #333;
     flex-grow: 1;
     display: flex;
@@ -20,18 +20,127 @@ h1 {
     justify-content: space-between;
 }
 
+/* 글쓰기 버튼 */
+
+.top-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;  
+    padding: 0;  
+}
+
 .write_btn {
     margin-left: 10px;
-    margin-top: 5px;
-    height: 30px;
-    width: 50px;
-    text-align: center;
-    font-size: 0.9em;
+    margin-top: 8px;
+    height: 10px;        
+    line-height: 10px;    
+    padding: 0 12px;     
+    font-size: 1em;
     background-color: #007BFF;
     color: white;
     border-radius: 5px;
     text-decoration: none;
 }
+
+#category {
+    padding: 0;
+    margin-right: 0;
+    text-align: center;
+}
+
+.searchForm {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.searchForm select,
+.searchForm input[type="text"] {
+    height: 40px;
+    padding: 0 10px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+#searchBtn {
+    height: 40px;
+    padding: 0 15px;
+    font-size: 1em;
+    margin-right: 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+#searchBtn:hover {
+    background-color: #0056b3;
+}
+
+
+/* 게시글 리스트 */
+.post_list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.post_list li {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+    background: #fff;
+    margin-bottom: 0px;
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: 0.2s ease;
+}
+
+.post_list li:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* 제목 + 아이콘 묶음 */
+.post-left {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.post-title {
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.post-title:hover {
+    text-decoration: underline;
+}
+
+.isFile {
+    width: 18px;
+    height: 18px;
+    object-fit: contain;
+    vertical-align: middle;
+}
+
+/* 작성자 + 날짜 */
+.post-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.9em;
+    color: #666;
+}
+
 
 
 #user_account {
@@ -147,6 +256,12 @@ footer p {
 #registerBtn:hover {
     background-color: #218838;
 }
+#registerBtn:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+
 
 /* 로그인 폼 스타일 */
 .login_form {
@@ -273,44 +388,6 @@ footer p {
     background-color: #007BFF;
 }
 
-/* 게시글 목록 */
-.post_list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.post_list li {
-    background: #fff;
-    margin-bottom: 15px;
-    padding: 15px 20px;
-    border-radius: 10px;
-    border: 1px solid #ddd;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
-    transition: 0.2s ease;
-}
-
-.post_list li:hover {
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-}
-
-.post_list li a {
-    font-size: 1.2rem;
-    font-weight: bold;
-    color: #007bff;
-    text-decoration: none;
-}
-
-.post_list li a:hover {
-    text-decoration: underline;
-}
-
-.post_list li small {
-    display: block;
-    margin-top: 5px;
-    color: #666;
-    font-size: 0.85rem;
-}
 
 /* 글 조회 */
 #viewHead {
