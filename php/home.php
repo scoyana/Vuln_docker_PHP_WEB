@@ -1,5 +1,30 @@
 <?php
 require_once 'db.php';
+
+// 페이지네이션 관련
+$posts_per_page = 10;
+$current_page = $_GET['pageNum'] ?? 1;
+
+// 전체 게시글 수
+$total_posts = $pdo->query("SELECT COUNT(*) FROM posts")->fetchColumn();
+$total_pages = ceil($total_posts / $posts_per_page);
+$offset = ($current_page - 1) * $posts_per_page;
+
+// 게시글 가져오기
+$stmt = $pdo->prepare("
+    SELECT p.id, p.title, p.file_path, p.created_at, u.user_id AS author
+    FROM posts p
+    JOIN users u ON p.user_id = u.id
+    ORDER BY p.created_at DESC
+    LIMIT :limit OFFSET :offset
+");
+$stmt->bindValue(':limit', $posts_per_page, PDO::PARAM_INT);
+$stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
+$stmt->execute();
+$posts = $stmt->fetchAll();
+
+// 페이지네이션 링크를 위한 base URL
+$base_url = "index.php?page=home";
 ?>
 
 <div class="top-controls">
@@ -20,36 +45,6 @@ require_once 'db.php';
 </div>
 
 <?php
-try {
-    $sql = "SELECT p.id, p.title, p.file_path, p.created_at, u.user_id AS author
-            FROM posts p
-            JOIN users u ON p.user_id = u.id
-            ORDER BY p.created_at DESC";
-    $stmt = $pdo->query($sql);
-    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if (!$posts) {
-        echo "<p>게시글이 없습니다.</p>";
-    } else {
-        echo "<ul class='post_list'>";
-        foreach ($posts as $post) {
-            echo "<li>";
-            echo "<div class='post-left'>";
-            echo "<a href='view.php?id=" . $post['id'] . "' class='post-title'>" . ($post['title']) . "</a>";
-            if ($post['file_path']) {
-                echo "<img src='/img/download.png' alt='첨부파일' class='isFile'>";
-            }
-            echo "</div>";
-            echo "<div class='post-info'>";
-            echo "<small>" . $post['author'] . "</small>";
-            echo "<small>(" . $post['created_at'] . ")</small>";
-            echo "</div>";
-            echo "</li>";
-        }
-        echo "</ul>";
-    }
-} catch (PDOException $e) {
-    error_log("DB error: " . $e->getMessage());
-    echo "<script>alert('서버 오류가 발생했습니다. 잠시 후 다시 시도하세요.'); history.back();</script>";
-}
+include 'post_list.php';
+include 'pagination.php';
 ?>

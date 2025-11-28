@@ -40,3 +40,18 @@
         }
     });
 })();
+
+// window.addEventListener('load', () => {
+//     const footer = document.querySelector('.footer');
+//     const bodyHeight = document.body.scrollHeight;
+//     const windowHeight = window.innerHeight;
+
+//     if (bodyHeight < windowHeight) {
+//         footer.style.position = 'absolute';
+//         footer.style.bottom = '0';
+//         footer.style.width = '100%';
+//     } else {
+//         footer.style.position = 'relative';
+//     }
+// });
+

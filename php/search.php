@@ -1,63 +1,71 @@
-<?php include_once 'header.php'; ?>
 <?php
+include_once 'header.php';
+require_once 'db.php';
 
 $category = $_GET['category'] ?? '';
-$keyword = $_GET['keyword'] ?? '';
+$keyword  = $_GET['keyword'] ?? '';
 
-try {
-    $sql = "SELECT p.id, p.title, p.content, p.file_path, p.created_at, u.user_id AS author
-            FROM posts p
-            JOIN users u ON p.user_id = u.id";
+$posts_per_page = 10;
+$current_page = $_GET['pageNum'] ?? 1;
 
-    $params = [];
-    if ($keyword) {
-        switch ($category) {
-            case 'title':
-                $sql .= " WHERE p.title LIKE ?";
-                $params[] = "%$keyword%";
-                break;
-            case 'content':
-                $sql .= " WHERE p.content LIKE ?";
-                $params[] = "%$keyword%";
-                break;
-            case 'all':
-                $sql .= " WHERE p.title LIKE ? OR p.content LIKE ?";
-                $params[] = "%$keyword%";
-                $params[] = "%$keyword%";
-                break;
-            case 'author':
-                $sql .= " WHERE u.user_id LIKE ?";
-                $params[] = "%$keyword%";
-                break;
-        }
+$sql = "SELECT COUNT(*) FROM posts p JOIN users u ON p.user_id = u.id ";
+$where = "";
+$params = [];
+
+if ($keyword) {
+    switch ($category) {
+        case 'title':
+            $where = " WHERE p.title LIKE ?";
+            $params[] = "%$keyword%";
+            break;
+        case 'content':
+            $where = " WHERE p.content LIKE ?";
+            $params[] = "%$keyword%";
+            break;
+        case 'all':
+            $where = " WHERE p.title LIKE ? OR p.content LIKE ?";
+            $params[] = "%$keyword%";
+            $params[] = "%$keyword%";
+            break;
+        case 'author':
+            $where = " WHERE u.user_id LIKE ?";
+            $params[] = "%$keyword%";
+            break;
     }
-
-    $sql .= " ORDER BY p.created_at DESC";
-
-    $stmt = $pdo->prepare($sql);
-    $stmt->execute($params);
-    $posts = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-    if (!$posts) {
-        echo "<p>검색 결과가 없습니다.</p>";
-    } else {
-        echo "<ul class='post_list'>";
-        foreach ($posts as $post) {
-            echo "<li>";
-            echo "<a href='view.php?id=" . $post['id'] . "'>" . ($post['title']) . "</a>";
-            if ($post['file_path']) {
-                echo "<img src='/img/download.png' alt='첨부파일'>";
-            }
-            echo " <small>작성자 : " . ($post['author']) . "</small>";
-            echo " <small>(" . $post['created_at'] . ")</small>";
-            echo "</li>";
-        }
-        echo "</ul>";
-    }
-} catch (PDOException $e) {
-    error_log("DB error: " . $e->getMessage());
-    echo "<script>alert('서버 오류가 발생했습니다.'); history.back();</script>";
 }
+
+$count_stmt = $pdo->prepare($sql . $where);
+$count_stmt->execute($params);
+$total_posts = $count_stmt->fetchColumn();
+
+$total_pages = ceil($total_posts / $posts_per_page);
+$offset = ($current_page - 1) * $posts_per_page;
+
+$limit = (int)$posts_per_page;
+$offset = (int)$offset;
+
+$stmt = $pdo->prepare("
+    SELECT p.id, p.title, p.file_path, p.created_at, u.user_id AS author
+    FROM posts p
+    JOIN users u ON p.user_id = u.id
+    $where
+    ORDER BY p.created_at DESC
+    LIMIT $limit OFFSET $offset
+");
+$stmt->execute($params);
+$posts = $stmt->fetchAll();
+
+if (!$posts) {
+    echo "<script>
+            alert('검색 결과가 없습니다.');
+            window.location.href = 'index.php?page=home';
+          </script>";
+    exit;
+}
+
+$base_url = "search.php?category=$category&keyword=" . urlencode($keyword);
 ?>
 
+<?php include 'post_list.php'; ?>
+<?php include 'pagination.php'; ?>
 <?php include_once 'footer.php'; ?>

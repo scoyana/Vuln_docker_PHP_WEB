@@ -2,7 +2,7 @@
 
 $page = $_GET['page'] ?? 'home';
 
-$whitelist = ['home', 'about', 'write', 'register', 'login', 'logout'];
+$whitelist = ['home', 'about', 'write', 'register', 'login', 'logout', 'account'];
 if (in_array($page, $whitelist)) {
     
     switch ($page) {
@@ -20,6 +20,9 @@ if (in_array($page, $whitelist)) {
             break;
         case 'logout';
             $pageTitle = '로그아웃';
+            break;
+        case 'account';
+            $pageTitle = '내정보';
             break;
         case 'write':
             $pageTitle = '글쓰기';

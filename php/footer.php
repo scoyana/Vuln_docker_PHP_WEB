@@ -1,5 +1,5 @@
 <div class="footer">
-    <hr>    
+    <!-- <hr>     -->
     
     <footer class="explain">
         <p>&copy; 2025 LIM's Vulnerable Lab - Based on the KnockOn course</p>

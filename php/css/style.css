@@ -1,24 +1,36 @@
+/* body를 flex 컨테이너로 만들고 세로 방향 정렬 */
 body {
-    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     margin: 0;
-    padding: 0;
+    font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+}
+
+/* main content 영역을 flex-grow:1로 늘려서 footer가 아래로 밀리도록 */
+main {
+    flex: 1;
 }
 
 .nav {
     display: flex;
     align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 10px 0;
 }
 
 h1 {
-    margin-left: 20px;
-    font-size: 2.0em;
-    color: #333;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+    margin: 0;
+    font-size: 3em;
 }
+
+#user_account {
+    position: absolute;
+    right: 20px;
+}
+
 
 /* 글쓰기 버튼 */
 
@@ -82,6 +94,28 @@ h1 {
     background-color: #0056b3;
 }
 
+/* 페이지네이션 */
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+.pagination a {
+    display: absolute;
+    padding: 2px 5px;
+    margin: 0 2px;
+    color: #007BFF;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.2s;
+}
+
+.pagination a.current {
+    background-color: #007BFF;
+    color: white;
+    pointer-events: none; /* 현재 페이지 클릭 방지 */
+}
+
+
 
 /* 게시글 리스트 */
 .post_list {
@@ -141,8 +175,6 @@ h1 {
     color: #666;
 }
 
-
-
 #user_account {
     margin-left: auto;
     display: flex;
@@ -162,42 +194,36 @@ header h1 a {
     color: #333;
 }
 
-.footer {
-    border: none;
-    border-top: 1px solid #ddd;
-    margin: 20px 0;
-    padding-top: 10px;
-    text-align: center;
-    color: #666;
-}
-
-.explain {
-    font-size: 0.9em;
-    color: #666;
-    text-align: center;
-    margin-top: 20px;
-}
-.explain p {
-    margin: 5px 0;
-}
-.explain strong {
-    color: #d9534f;
-}
 footer {
-    bottom: 0px;
-    width: 100%;
-    position: absolute;
-    bottom: 0px;
-    height: 4rem;
-    margin-top: 40px;
-    padding: 15px;
+    height: 3rem;
     background-color: #f9f9f9;
     border-top: 1px solid #ddd;
+    text-align: center;
+    color: #666;
+    padding: 15px;
 }
+
 footer p {
     margin: 5px 0;
     font-size: 0.85em;
 }
+
+/* 설명 텍스트 */
+.explain {
+    margin-top: 20px;
+    font-size: 0.9em;
+    text-align: center;
+    color: #666;
+}
+
+.explain p {
+    margin: 5px 0;
+}
+
+.explain strong {
+    color: #d9534f;
+}
+
 
 /* 회원 가입 폼 스타일 */
 #registerHead {
@@ -390,9 +416,13 @@ footer p {
 
 
 /* 글 조회 */
+.viewClass {
+   margin-left: 10px;
+}
+
 #viewHead {
     text-align: left;
-    margin-top: 30px;
+    margin-top: 10px;
     color: #333;
 }
 #viewContent {
@@ -400,11 +430,6 @@ footer p {
     font-size: 1rem;
     line-height: 1.6;
     color: #444;
-}
-#viewContent img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 15px;
 }
 
 #viewBack {
@@ -461,4 +486,68 @@ footer p {
 
 #viewDelete:hover {
     background-color: #c82333;
+}
+
+/* 게시글 보기 */
+.viwewClass {
+    text-align : left;
+    margin-left : 5px;
+}
+
+/* 내 정보 */
+.account_container {
+    width: 400px;
+    margin: 40px auto;
+    padding: 30px 20px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
+}
+
+.account_container h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.account_table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.account_table th,
+.account_table td {
+    text-align: left;
+    padding: 4px 12px;
+}
+
+.account_actions {
+    display: flex;           
+    justify-content: center; 
+    gap: 15px;             
+    margin-top: 20px;       
+}
+
+
+.account_btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 0 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#delete_btn {
+    background-color: #dc3545;
 }
