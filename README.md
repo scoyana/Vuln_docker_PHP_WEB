@@ -1,1 +1,105 @@
-<div class="notion-container"><article class="page sans" id="1fe78260-ee30-8064-b8d7-c34654ee57a1"><div class="page-body"><h1 class="" id="1fe78260-ee30-800b-8883-cdc50cfe2d44">🛠 게시판 만들기 프로젝트 명세서</h1><h2 class="" id="1fe78260-ee30-80b2-bc46-f0fdce3e9ff6">📌 과제: LAMP 웹 서버 기반 게시판 구축</h2><h3 class="" id="1fe78260-ee30-804d-bddd-c2294750d437">🎯 목표</h3><ol class="numbered-list" id="1fe78260-ee30-80b3-a3c5-d960184b36ee" start="1" type="1"><li>LAMP(Linux + Apache + MySQL + PHP) 웹 서버의 문법, 구조, 동작 방식, 사용 방법 이해</li></ol><ol class="numbered-list" id="1fe78260-ee30-8046-a318-cfe6b601bcdd" start="2" type="1"><li>웹 해킹 실습을 위한 실습용 서버 및 애플리케이션 환경 구축</li></ol><hr id="1fe78260-ee30-80e5-bacc-f69c1e002a67"><h2 class="" id="1fe78260-ee30-8013-a905-c5a174117481">✅ 세부 명세서</h2><h3 class="" id="1fe78260-ee30-8036-9491-c695fe3190f0">1️⃣ 사용 환경 및 기술 스택</h3><ul class="bulleted-list" id="1fe78260-ee30-801d-bb86-c7efcb68a00e"><li style="list-style-type:disc"><strong>운영체제</strong>: Linux (Ubuntu 20.04 이상 권장)</li></ul><ul class="bulleted-list" id="1fe78260-ee30-80d4-9ad5-ec0d87bdef68"><li style="list-style-type:disc"><strong>웹 서버</strong>: Apache2</li></ul><ul class="bulleted-list" id="1fe78260-ee30-80a0-8772-d1ad9c7466fe"><li style="list-style-type:disc"><strong>DBMS</strong>: MySQL</li></ul><ul class="bulleted-list" id="1fe78260-ee30-80eb-9884-ec3b521adfe1"><li style="list-style-type:disc"><strong>서버 언어</strong>: PHP (7.4 이상 권장)</li></ul><ul class="bulleted-list" id="1fe78260-ee30-804d-a17a-f799b72ad938"><li style="list-style-type:disc"><strong>기타</strong>: HTML/CSS (기본 UI 구현용), JavaScript(Optional), Docker(Advanced)</li></ul><h3 class="" id="1fe78260-ee30-8099-bda8-f1443856dfdb">2️⃣ 필수 기능 목록</h3><table class="simple-table" id="1fe78260-ee30-8006-b694-dc2e80715f2c"><tbody><tr id="1fe78260-ee30-8002-83de-ee3d907cce2a"><td class="" id="RzF[">구분</td><td class="" id="CkGL">기능 설명</td></tr><tr id="1fe78260-ee30-802c-b0c7-fb804606d329"><td class="" id="RzF[">📄 게시물 목록</td><td class="" id="CkGL">여러 개의 게시물을 리스트 형태로 보여주는 메인 화면 구현 (최신순 정렬)</td></tr><tr id="1fe78260-ee30-8079-ad05-d8b94083a79f"><td class="" id="RzF[">🔍 게시물 검색</td><td class="" id="CkGL">제목 또는 내용 기준으로 키워드 검색 기능 구현</td></tr><tr id="1fe78260-ee30-801a-9fc4-e6f707113662"><td class="" id="RzF[">➕ 게시물 작성</td><td class="" id="CkGL">제목, 내용, 파일 업로드(첨부파일)를 포함한 글 작성 기능</td></tr><tr id="1fe78260-ee30-80af-a962-f7bdc63fc042"><td class="" id="RzF[">✏️ 게시물 수정</td><td class="" id="CkGL">본인이 작성한 글만 수정 가능하게 구현 (세션 기반 검증)</td></tr><tr id="1fe78260-ee30-8032-9cf0-dbbb6778d9c2"><td class="" id="RzF[">❌ 게시물 삭제</td><td class="" id="CkGL">본인이 작성한 글만 삭제 가능하게 구현 (세션 기반 검증)</td></tr><tr id="1fe78260-ee30-80d9-bd0f-f2bab0305f22"><td class="" id="RzF[">📎 파일 업로드</td><td class="" id="CkGL">게시글 당 첨부파일 1개 이상 가능 (서버에 저장하고 다운로드 링크 제공)</td></tr><tr id="1fe78260-ee30-80b5-b205-c6a52068d0be"><td class="" id="RzF[">👤 회원가입</td><td class="" id="CkGL">사용자 ID/PW 등록 기능 구현, 비밀번호는 단방향 해시(SHA256, bcrypt 등) 처리 권장</td></tr><tr id="1fe78260-ee30-80b5-80b6-e82b03cca921"><td class="" id="RzF[">🔐 로그인/로그아웃</td><td class="" id="CkGL">쿠키/세션 기반 로그인 상태 유지 기능 구현</td></tr></tbody></table><h3 class="" id="1fe78260-ee30-800f-877a-f5cc7adbeb06">3️⃣ 네트워크 요구 사항</h3><ul class="bulleted-list" id="1fe78260-ee30-80fa-90c9-fc09c51d99cd"><li style="list-style-type:disc"><strong>외부 접속 가능</strong>해야 함<ul class="bulleted-list" id="1fe78260-ee30-8073-8264-c1f2fb04d09f"><li style="list-style-type:circle">로컬 환경의 경우: 포트포워딩 설정 필요 (ex: 공유기 설정에서 내부 IP 포트 개방)</li></ul><ul class="bulleted-list" id="1fe78260-ee30-80de-9c56-dce3c2a6da9a"><li style="list-style-type:circle">클라우드 환경 권장 (ex: AWS, Google Cloud, Oracle Cloud, Vultr 등)</li></ul></li></ul><hr id="1fe78260-ee30-8096-beaa-d2301dced629"><h2 class="" id="1fe78260-ee30-8002-9d12-d3720737d846">⚙️ 페이지 구성 예시</h2><table class="simple-table" id="1fe78260-ee30-808f-8b31-ecbbc618fe3b"><tbody><tr id="1fe78260-ee30-80b5-b665-ebd44f01b466"><td class="" id="BIMb">페이지</td><td class="" id="Pocx">설명</td></tr><tr id="1fe78260-ee30-804b-81f8-d584f573d866"><td class="" id="BIMb"><code>index.php</code></td><td class="" id="Pocx">게시판 메인 (글 리스트, 검색 입력창)</td></tr><tr id="1fe78260-ee30-80fe-af43-d42c83e881eb"><td class="" id="BIMb"><code>view.php?id=글번호</code></td><td class="" id="Pocx">게시글 상세 조회 페이지</td></tr><tr id="1fe78260-ee30-8059-8ac5-fa69d6675d0b"><td class="" id="BIMb"><code>write.php</code></td><td class="" id="Pocx">게시글 작성 페이지 (로그인 필요)</td></tr><tr id="1fe78260-ee30-80bc-889e-e30801dc5f92"><td class="" id="BIMb"><code>edit.php?id=글번호</code></td><td class="" id="Pocx">게시글 수정 페이지 (본인 글만)</td></tr><tr id="1fe78260-ee30-801a-9519-fc986621757c"><td class="" id="BIMb"><code>delete.php?id=글번호</code></td><td class="" id="Pocx">게시글 삭제 요청 처리 (본인 글만)</td></tr><tr id="1fe78260-ee30-8090-8be0-d2ab3f6874eb"><td class="" id="BIMb"><code>login.php</code></td><td class="" id="Pocx">로그인 페이지</td></tr><tr id="1fe78260-ee30-806e-90d2-f586da559337"><td class="" id="BIMb"><code>register.php</code></td><td class="" id="Pocx">회원가입 페이지</td></tr><tr id="1fe78260-ee30-8071-aa56-e8faa3bb2871"><td class="" id="BIMb"><code>logout.php</code></td><td class="" id="Pocx">로그아웃 처리 스크립트</td></tr></tbody></table><hr id="1fe78260-ee30-8003-8aa1-f66d974fbdad"><h2 class="" id="1fe78260-ee30-8058-8c2f-ecce4aabb7ae">
+<div align="center">
+
+# 📘 My PHP Bulletin Board Project  
+**A lightweight PHP & MySQL board built for learning web development and web security.**
+
+![Static Badge](https://img.shields.io/badge/PHP-7.4%2B-8892BF?logo=php)
+![Static Badge](https://img.shields.io/badge/MySQL-8.0-4479A1?logo=mysql)
+![Static Badge](https://img.shields.io/badge/Apache-2.x-D22128?logo=apache)
+![Static Badge](https://img.shields.io/badge/License-MIT-green)
+![Static Badge](https://img.shields.io/badge/Status-Active-brightgreen)
+
+</div>
+
+---
+
+## 🚀 **프로젝트 개요**
+이 프로젝트는 **LAMP 스택 기반의 기본 CRUD 게시판**을 직접 만드는 실습용 프로젝트입니다.  
+웹 개발의 전체 흐름을 경험하고, 나아가 웹 해킹(Pentesting) 실습 환경으로도 사용할 수 있도록 설계되었습니다.
+
+---
+
+## 📂 **기능 요약**
+
+### 📝 게시판 기능
+- 게시글 목록 조회  
+- 게시글 검색  
+- 게시글 작성 / 수정 / 삭제  
+- 첨부파일 업로드 및 다운로드  
+
+### 👤 회원 기능
+- 회원가입  
+- 로그인 / 로그아웃  
+- 세션 기반 사용자 인증  
+- 작성자 검증 후 글 수정/삭제 가능  
+
+> ⚠️ **이 프로젝트는 학습용이며, 실서비스 수준의 보안 처리가 되어 있지 않습니다.**
+
+---
+
+## 🧱 **사용 기술**
+| Category | Stack |
+|---------|-------|
+| Backend | PHP 7.4+ |
+| Database | MySQL / MariaDB |
+| Web Server | Apache 2.x |
+| Frontend | HTML / CSS |
+| OS | Ubuntu / WSL / Docker |
+
+---
+
+## 📂 Project Directory Structure
+
+```bash
+My_PHP_WEB/
+├── .env_sample              # 환경 변수 샘플 파일
+├── .gitignore
+├── Dockerfile               # PHP + Apache 환경 구성
+├── docker-compose.yaml      # 서비스 묶음 실행 설정
+
+├── apache2/                 # Apache 서버 설정
+│   ├── apache2.conf
+│   └── conf-available/
+│       └── security.conf
+
+└── php/                     # 웹 애플리케이션 메인 코드
+    ├── index.php            # 게시글 목록 / 메인 페이지
+    ├── home.php             
+    ├── view.php             # 게시글 상세보기
+    ├── write.php            # 글 작성 페이지
+    ├── write_ok.php         # 글 작성 처리
+    ├── edit.php             # 글 수정 페이지
+    ├── edit_ok.php          # 글 수정 처리
+    ├── delete.php           # 글 삭제 처리
+
+    ├── post_list.php        # 게시글 출력 전용 include 파일
+    ├── pagination.php       # 페이징 처리
+
+    ├── login.php            # 로그인 UI
+    ├── login_ok.php         # 로그인 처리
+    ├── logout.php
+    ├── register.php         # 회원가입 페이지
+    ├── register_ok.php
+    ├── account.php          # 내 정보 페이지
+    ├── change_password.php
+    ├── delete_account.php
+    ├── check_user.php       # AJAX 중복 체크 등 검증
+    ├── search.php           # 검색 페이지
+
+    ├── layout.php           # 공통 레이아웃
+    ├── header.php
+    ├── footer.php
+
+    ├── db.php               # DB 연결 파일
+
+    ├── css/
+    │   └── style.css        # 스타일 시트
+
+    ├── js/
+    │   └── check_id.js      # 아이디 중복 검사 JS
+
+    ├── img/
+    │   └── download.png
+
+    └── uploads/             # 업로드된 파일 저장소
+
