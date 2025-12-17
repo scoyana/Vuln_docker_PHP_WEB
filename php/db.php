@@ -1,9 +1,9 @@
 <?php
 
-$DB_HOST = getenv('DB_HOST') ?: 'db';
-$DB_USER = getenv('DB_USER');
-$DB_PASSWORD = getenv('DB_PASSWORD');
-$DB_DATABASE = getenv('DB_DATABASE');
+$DB_HOST = getenv('MYSQL_HOST') ?: 'db';
+$DB_USER = getenv('MYSQL_USER');
+$DB_PASSWORD = getenv('MYSQL_PASSWORD');
+$DB_DATABASE = getenv('MYSQL_DATABASE');
 
 try {
     $dsn = "mysql:host=$DB_HOST;dbname=$DB_DATABASE;charset=utf8mb4";
