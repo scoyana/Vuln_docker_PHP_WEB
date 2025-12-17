@@ -125,4 +125,3 @@ My_PHP_WEB/
     │   └── download.png
 
     └── uploads/             # 업로드된 파일 저장소
-
