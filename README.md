@@ -48,6 +48,29 @@
 
 ---
 
+🔧 환경 변수 설정 (.env)
+
+프로젝트를 실행하기 전에 루트 디렉토리에 .env 파일을 생성해야 합니다.
+
+프로젝트에는 .env_sample 파일이 포함되어 있으므로, 이를 복사하여 사용하세요.
+
+cp .env_sample .env
+
+
+그리고 .env 파일 안의 값을 자신의 환경에 맞게 설정합니다.
+
+예시:
+
+DB_HOST=mysql
+DB_USER=root
+DB_PASS=your_password
+DB_NAME=board
+UPLOAD_DIR=/var/www/html/uploads
+
+
+.env 파일은 민감한 정보를 포함하므로 GitHub에 업로드하면 안 됩니다.
+이미 .gitignore에 포함되어 있어 안전합니다.
+
 ## 📂 Project Directory Structure
 
 ```bash
@@ -102,4 +125,3 @@ My_PHP_WEB/
     │   └── download.png
 
     └── uploads/             # 업로드된 파일 저장소
-
