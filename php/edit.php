@@ -42,6 +42,5 @@ try {
     <button type="submit" id="write">수정 완료</button>
 </form>
 
-<a href="view.php?id=<?= $post['id'] ?>">돌아가기</a>
 
 <?php include_once 'footer.php'; ?>
