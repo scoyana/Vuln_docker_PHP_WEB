@@ -15,4 +15,4 @@ CREATE TABLE posts (
   file_path VARCHAR(255),
   created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES users(id)
-);
+) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
