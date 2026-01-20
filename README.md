@@ -43,7 +43,7 @@
 | Backend | PHP 7.4+ |
 | Database | MySQL / MariaDB |
 | Web Server | Apache 2.x |
-| Frontend | HTML / CSS |
+| Frontend | HTML / CSS / JAVASCRIPT |
 | OS | Ubuntu / WSL / Docker |
 
 ---
@@ -100,18 +100,18 @@ My_PHP_WEB/
 
     ├── login.php            # 로그인 UI
     ├── login_ok.php         # 로그인 처리
-    ├── logout.php
+    ├── logout.php           # 로그아웃 처리
     ├── register.php         # 회원가입 페이지
-    ├── register_ok.php
+    ├── register_ok.php      # 회원가입 처라
     ├── account.php          # 내 정보 페이지
-    ├── change_password.php
-    ├── delete_account.php
+    ├── change_password.php  # 비밀번호 변경 페이지  
+    ├── delete_account.php   # 계정 삭제 페이지
     ├── check_user.php       # AJAX 중복 체크 등 검증
     ├── search.php           # 검색 페이지
 
     ├── layout.php           # 공통 레이아웃
-    ├── header.php
-    ├── footer.php
+    ├── header.php           # 공통 헤더
+    ├── footer.php           # 공통 footer
 
     ├── db.php               # DB 연결 파일
 
@@ -122,6 +122,6 @@ My_PHP_WEB/
     │   └── check_id.js      # 아이디 중복 검사 JS
 
     ├── img/
-    │   └── download.png
+    │   └── download.png     # 로고 등 이미지
 
     └── uploads/             # 업로드된 파일 저장소
