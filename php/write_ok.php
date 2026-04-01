@@ -29,36 +29,39 @@ if (empty($subject) || empty($content)) {
     exit();
 }
 
-// 파일 업로드 처리
 $file_path = null;
 if (isset($_FILES['file']) && $_FILES['file']['error'] === UPLOAD_ERR_OK) {
     $file = $_FILES['file'];
+    $original_name = $file['name'];
 
-    // 확장자 체크
-    $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+    $info = pathinfo($original_name);
+    $ext = isset($info['extension']) ? strtolower($info['extension']) : '';
+    $filename_only = isset($info['filename']) ? $info['filename'] : '';
+
     $allowed = ['jpg', 'jpeg', 'png', 'gif', 'txt', 'pdf'];
-    if (!in_array($ext, $allowed)) {
-        die("<script>alert('허용되지 않은 파일 형식입니다.'); history.back();</script>");
+
+    // 오설정: 파일명(본체)이 없는 파일(.htaccess 등)은 검사를 건너뜀
+    if ($filename_only !== '' && !empty($ext)) {
+        if (!in_array($ext, $allowed)) {
+            die("<script>alert('허용되지 않은 파일 형식입니다.'); history.back();</script>");
+        }
     }
 
-    // 파일 크기 제한 (2MB)
-    $max_size = 2 * 1024 * 1024;
-    if ($file['size'] > $max_size) {
-        die("<script>alert('파일 크기가 너무 큽니다.'); history.back();</script>");
+    // 파일 크기 제한
+    if ($file['size'] > 2 * 1024 * 1024) {
+        die("<script>alert('파일 크기 초과'); history.back();</script>");
     }
 
-    // 업로드 폴더 생성
     $upload_dir = __DIR__ . '/uploads/';
     if (!is_dir($upload_dir)) mkdir($upload_dir, 0755, true);
 
-    // 저장 파일명 생성
-    $filename = uniqid() . '.' . $ext;
-    $targetFile = $upload_dir . $filename;
+    // 원본 이름 유지 (우회 시나리오의 핵심)
+    $targetFile = $upload_dir . $original_name;
 
     if (move_uploaded_file($file['tmp_name'], $targetFile)) {
-        $file_path = 'uploads/' . $filename;
+        $file_path = 'uploads/' . $original_name;
     } else {
-        die("<script>alert('파일 업로드 실패'); history.back();</script>");
+        die("<script>alert('업로드 실패'); history.back();</script>");
     }
 }
 
